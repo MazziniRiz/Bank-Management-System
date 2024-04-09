@@ -16,7 +16,7 @@ class User{
             l_name = "Doe";
             age=0;
             mobile_num=000000000000;
-            balance_current=0;
+            balance_current=3000;
         };
         User(string f, string l, int a, int m_n, int b_c){
             f_name = f;
@@ -36,6 +36,7 @@ class User{
 
 int main(){
     int Login_choice;
+
     cout << "WELCOME TO THE BANK PORTAL!!" << endl;
     cout << "1)LogIn \n2)SignUp" << endl;
 
@@ -45,10 +46,21 @@ int main(){
     switch(Login_choice)
     {
         case 1:
-            cout << "Done 1" << endl;
-            break;
-        case 2:
-            cout << "Done 2" << endl;
+            string first_name;
+            string last_name;
+            cout << "\nFirst and Last name: ";
+            cin >> first_name >> last_name;
+
+            int Age;
+            cout << "\nEnter your age: ";
+            cin >> Age;
+
+            int phone_num;
+            cout << "\nEnter Phone Number: ";
+            cin >> phone_num;
+
+            User o(first_name, last_name, Age, phone_num, 3000);
+            cout << "\nDepositing intial 3000AED into account.......Successful" << endl;
             break;
     }
 
