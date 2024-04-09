@@ -52,6 +52,5 @@ int main(){
             break;
     }
 
-    cout << "Git Control" << endl;
     return 0;
 }
