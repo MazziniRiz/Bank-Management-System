@@ -30,8 +30,16 @@ class User{
         void printInfo(){
             cout << "Name: " << f_name << " " << l_name << endl;
             cout << "Age: " << age << endl;
-            cout << "Mobile Number: +" << mobile_num << endl;
+            cout << "Mobile Number: +971 " << mobile_num << endl;
             cout << "Current Balance in Bank Account: " << balance_current << endl;
+        }
+
+        User(const User& m){
+            f_name = m.f_name;
+            l_name = m.l_name;
+            age = m.age;
+            mobile_num = m.mobile_num;
+            balance_current = m.balance_current;
         }
 
         bool operator==(const User& u){
@@ -63,37 +71,45 @@ class User{
 int main(){
     int Login_choice;
     vector<User> User_List;
-    int n = 0;
+    bool flag = true;
     string first_name, last_name;
-    while(n < 2)
+
+    while(flag)
     {
         cout << "WELCOME TO THE BANK PORTAL!!" << endl;
-        cout << "\n1)SignUp \n2)LogIn" << endl;
+        cout << "\n1)SignUp \n2)LogIn \n3)Exit" << endl;
 
-        cout << "\n1 or 2: ";
+        cout << endl;
+        cout << "Select an Option: ";
         cin >> Login_choice;
 
         switch(Login_choice)
         {
             case 1:
             {   
-                cout << "\nFirst and Last name: ";
+                cout << "First and Last name: ";
                 cin >> first_name >> last_name;
+                cout << endl;
 
                 int Age;
-                cout << "\nEnter your age: ";
+                cout << "Enter your age: ";
                 cin >> Age;
+                cout << endl;
 
                 int phone_num;
-                cout << "\nEnter Phone Number: ";
+                cout << "Enter Phone Number: ";
                 cin >> phone_num;
+                cout << endl;
 
-                User o(first_name, last_name, Age, phone_num, 3000);
-                cout << "\nDepositing intial 3000AED into account.......Successful" << endl;
+                User o(first_name, last_name, Age, phone_num, 0);
+                User_List.push_back(o);
+                cout << endl;
+
+                cout << "Depositing initial 3000AED into account.......Successful" << endl;
                 break;
             }
             case 2:
-
+            {
                 cout << "\nFirst and Last Name: ";
                 cin >> first_name >> last_name;
 
@@ -104,14 +120,27 @@ int main(){
                         u = User_List[i];
                     }
                 }
+                
                 cout << endl;
                 u.printInfo();
 
                 break;
+            }
+            case 3:
+            {
+                flag = false;
+                break;
+            }
         }
-
-        n+=1;
+        
     }
 
+    cout << "Exited Program" << endl;
+    cout << "Content of User List: " << endl;
+    cout << endl;
+    for(auto x: User_List){
+        x.printInfo();
+        cout << endl;
+    }
     return 0;
 }
