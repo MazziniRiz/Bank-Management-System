@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "HomePage.cpp"
+#include "CurrentAccount.cpp"
 
 using namespace std;
 
@@ -26,6 +28,8 @@ class User{
             mobile_num = m_n; 
             balance_current = b_c;
         }
+
+        int get_balance_current(){return balance_current;}
 
         void printInfo(){
             cout << "Name: " << f_name << " " << l_name << endl;
@@ -69,7 +73,7 @@ class User{
 };
 
 int main(){
-    int Login_choice;
+    int option, HomePage_choice;
     vector<User> User_List;
     bool flag = true;
     string first_name, last_name;
@@ -81,9 +85,9 @@ int main(){
 
         cout << endl;
         cout << "Select an Option: ";
-        cin >> Login_choice;
+        cin >> option;
 
-        switch(Login_choice)
+        switch(option)
         {
             case 1:
             {   
@@ -106,6 +110,15 @@ int main(){
                 cout << endl;
 
                 cout << "Depositing initial 3000AED into account.......Successful" << endl;
+
+                homepage_menu(HomePage_choice, first_name);
+
+                switch(HomePage_choice)
+                {
+                    case 1: 
+                        CurrentAccount_script(o.get_balance_current());
+                }
+
                 break;
             }
             case 2:
@@ -115,14 +128,13 @@ int main(){
 
                 User u(first_name,last_name,0,0,0);
 
-                for(int i = 0; i < User_List.size(); i++){
-                    if(u == User_List[i]){
-                        u = User_List[i];
+                for(auto x:User_List){
+                    if(u == x){
+                        u = x;
                     }
                 }
                 
-                cout << endl;
-                u.printInfo();
+                
 
                 break;
             }
