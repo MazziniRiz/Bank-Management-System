@@ -5,6 +5,7 @@
 
 using namespace std;
 
+
 int main(){
     int Age, Mobile_Num;
     string first_name, last_name;
@@ -14,14 +15,10 @@ int main(){
     vector<User> user_database;
 
     while(flag){
-        //AuthChoice(Age, Mobile_Num, first_name, last_name, Current_Num, Saving_Num);
+        AuthChoice(Age, Mobile_Num, first_name, last_name, Current_Num, Saving_Num, user_database);
         flag = false;
     }
 
-    for(auto x : user_database){
-        x.printInfo();
-        cout << endl;
-    }
 
     return 0;
 }
