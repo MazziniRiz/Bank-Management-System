@@ -13,9 +13,10 @@ int main(){
 
     bool flag = true;
     vector<User> user_database;
+    User a;
 
     while(flag){
-        AuthChoice(Age, Mobile_Num, first_name, last_name, Current_Num, Saving_Num, user_database);
+        AuthChoice(Age, Mobile_Num, first_name, last_name, Current_Num, Saving_Num, user_database, a);
         flag = false;
     }
 

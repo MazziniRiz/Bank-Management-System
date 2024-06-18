@@ -7,7 +7,7 @@
 
 using namespace std;
 
-User SignUp(int& A, int& M_N, string& F_N, string& L_N, float& C_N, float& S_N, vector<User>& U_D)
+void SignUp(int& A, int& M_N, string& F_N, string& L_N, float& C_N, float& S_N, vector<User>& U_D, User& user)
 {
     cout << "Enter first and last name: ";
     cin >> F_N >> L_N;
@@ -19,34 +19,34 @@ User SignUp(int& A, int& M_N, string& F_N, string& L_N, float& C_N, float& S_N, 
     cin >> M_N;
 
     User o(A, M_N, F_N, L_N, 0, 0);
-
+    user = o;
     U_D.push_back(o);
-
-    return o;
 }
 
-User Login(int& A, int& M_N, string& F_N, string& L_N, float& C_N, float& S_N, vector<User>& U_D)
+void Login(int& A, int& M_N, string& F_N, string& L_N, float& C_N, float& S_N, vector<User>& U_D, User& user)
 {
     bool flag2 = true;
     do{
         cout << "Enter first and last name: ";
         cin >> F_N >> L_N;
 
-        for (auto x : U_D)
+        for (int i = 0; i < U_D.size(); i++)
         {
-            if ((x.getFirstName() == F_N) && (x.getLastName() == L_N))
+            if ((U_D[i].getFirstName() == F_N) && (U_D[i].getLastName() == L_N))
             {
-                return x;
+                user = U_D[i];
+                i = U_D.size();
+                flag2 = false;
             }
             else
             {
-                cout << "Not Found. Try Entering Again.";
+                cout << "Not Found. Try Entering Again." << endl;
             }
         }
     }while(flag2);
 }
 
-void AuthChoice(int& A, int& M_N, string& F_N, string& L_N, float& C_N, float& S_N, vector<User>& U_D)
+void AuthChoice(int& A, int& M_N, string& F_N, string& L_N, float& C_N, float& S_N, vector<User>& U_D, User& user)
 {
     int option;
     cout << "WELCOME TO BNK BANK E-PORTAL\n" << endl;
@@ -60,16 +60,16 @@ void AuthChoice(int& A, int& M_N, string& F_N, string& L_N, float& C_N, float& S
         switch (option)
         {
         case 1:
-            SignUp(A, M_N, F_N, L_N, C_N, S_N, U_D);
+            SignUp(A, M_N, F_N, L_N, C_N, S_N, U_D, user);
             break;
         case 2:
-            Login(A, M_N, F_N, L_N, C_N, S_N, U_D);
+            Login(A, M_N, F_N, L_N, C_N, S_N, U_D, user);
             break;
         case 3:
-            /*for(auto x : user_database){
+            for(auto x : U_D){
                 x.printInfo();
                 cout << endl;
-            }*/
+            }
             exit(0);
         default:
             cout << "Not correct option. Enter 1 or 2 or 3." << endl;
