@@ -60,10 +60,17 @@ class User{
             cout << endl;
         }
 
+        int getAge(){return age;}
+        int getMobileNum(){return mobile_num;}
         string getFirstName(){return f_name;}
         string getLastName(){return l_name;}
         float getCurrentNum(){return current_num;}
         float getSavingNum(){return saving_num;}
+
+        void setAge(){}
+        void setMobileNum(){}
+        void setFirstName(){}
+        void setLastName(){}
 
         void depositCurrentNum(const float& num){current_num = num; total_num += num;}
         void depositSavingNum(const float& num){saving_num = num; total_num += num;}
