@@ -1,2 +1,2 @@
 The Bank Management System includes the user interface of a proposed banking website. 
-I will start working on the website after I finish the user interface.
+It incorporates the use of Doubly Linked Lists to allow for traversal of pages within the website. The traversal path is indicated by the image labelled "Plan.png".
